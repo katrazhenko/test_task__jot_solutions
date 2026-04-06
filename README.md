@@ -1,70 +1,49 @@
-Yii Web Programming Framework
-=============================
+# Test Task — User Management
 
-Thank you for choosing Yii - a high-performance component-based PHP framework.
+Цей проект є тестовим завданням, реалізованим на базі фреймворку **Yii 1.1** з використанням **PHP 8.2** та бази даних **MariaDB 10**.
 
-[![Build Status](https://github.com/yiisoft/yii/workflows/build/badge.svg)](https://github.com/yiisoft/yii/actions)
+## Основний функціонал
 
-> Note that Yii 1.1 [has reached end of life](https://www.yiiframework.com/news/90/update-on-yii-1-1-support-and-end-of-life/)
-  and will only receive necessary security fixes and fixes to adjust the code for compatibility with PHP 7 and 8 if they do not cause breaking changes.
-  This allows you to keep your servers PHP version up to date in the environments where old Yii 1.1 applications are hosted and stay within the [version ranges supported by the PHP team](https://php.net/supported-versions.php).
-> 
-> Currently tested and supported [up to PHP 8.4](https://github.com/yiisoft/yii/blob/master/.github/workflows/build.yml#L36).
+- **Керування користувачами та профілями**: Реалізовано зв'язок базових таблиць (`user` та `profile`).
+- **Міграції бази даних**: Налаштовано міграцію (`m260406_000001_create_user_and_profile_tables`) для автоматичного створення необхідних таблиць, ключів та заповнення бази 12 тестовими записами.
+- **Моделі даних (Gii-стиль)**: 
+  - `User` — базова модель для таблиці користувачів з полями `email`, `created_at`, `updated_at`, `referer`, `type`.
+  - `Profile` — модель профілів зі зв'язками до `User`, що містить локалізовані константи статусів (`active`/`banned`) та мов (`en`/`ua`).
+  - `UserSearch` — спеціальна пошукова модель для об'єднання умов вибірки і сортування по обох таблицях.
+- **Таблиця (CGridView)**: 
+  - Динамічна AJAX-пагінація та фільтрація по всіх визначених колонках (пошта, ім'я, прізвище, дата логіну, статус тощо).
+  - Інтегрований `jQuery UI DatePicker` для зручного фільтрування по даті.
+- **Генерація даних**: Кнопка **✨ Generate 10**, яка за допомогою AJAX записує в БД ще 10 псевдо-випадкових, повністю унікальних записів, та автоматично оновлює стан сітки (GridView).
+- **Сучасний UI (Dark Theme)**: Кастомна темна стилізація (CSS) всієї платформи без використання готових важких бібліотек типу Bootstrap; стилізована пагінація, кнопки та таблиці.
 
-INSTALLATION
-------------
+## Вимоги
 
-Please make sure the release file is unpacked under a Web-accessible
-directory. You shall see the following files and directories:
+- **PHP 8.2** (або вище)
+- **MariaDB 10** (або MySQL еквівалент)
+- Веб-сервер (Laragon, XAMPP, Nginx/Apache) із налаштованим коренем на папку `/web`.
 
-      framework/           framework source files
-      requirements/        requirement checker
-      CHANGELOG            describing changes in every Yii release
-      LICENSE              license of Yii
-      README               this file
-      UPGRADE              upgrading instructions
+## Встановлення (Setup)
 
+1. **Клонування / розгортання**
+   Розгорніть файли проекту у папці вашого веб-сервера (наприклад, `c:\laragon\www\testtask.pp.ua`).
+   
+2. **Налаштування бази даних**
+   Створіть базу даних (наприклад, `testtask_y1`). Налаштуйте підключення у файлі конфігурації `web/protected/config/database.php`:
+   ```php
+   'connectionString' => 'mysql:host=localhost;dbname=testtask_y1',
+   'username' => 'root',
+   'password' => '', // Ваш пароль
+   ```
 
-REQUIREMENTS
-------------
+3. **Запуск міграцій**
+   Відкрийте термінал у кореневій папці проекту (`web`) і виконайте міграцію для створення таблиць і початкових даних:
+   ```bash
+   cd web
+   php protected/yiic.php migrate up
+   ```
 
-The minimum requirement by Yii is that your Web server supports
-PHP 5.1.0 or above. Yii has been tested with Apache HTTP server
-on Windows and Linux operating systems.
+4. **Запуск проекту**
+   Перейдіть до вашого веб-додатку за адресою, яку налаштували (наприклад, `http://testtask.pp.ua/user/index`).
 
-Please access the following URL to check if your Web server reaches
-the requirements by Yii, assuming "YiiPath" is where Yii is installed:
-
-      http://hostname/YiiPath/requirements/index.php
-
-
-QUICK START
------------
-
-Yii comes with a command line tool called "yiic" that can create
-a skeleton Yii application for you to start with.
-
-On command line, type in the following commands:
-
-        $ cd YiiPath/framework                (Linux)
-        cd YiiPath\framework                  (Windows)
-
-        $ ./yiic webapp ../testdrive          (Linux)
-        yiic webapp ..\testdrive              (Windows)
-
-The new Yii application will be created at "YiiPath/testdrive".
-You can access it with the following URL:
-
-        http://hostname/YiiPath/testdrive/index.php
-
-
-WHAT'S NEXT
------------
-
-Please visit the project website for tutorials, class reference
-and join discussions with other Yii users.
-
-
-
-The Yii Developer Team
-https://www.yiiframework.com
+---
+Реалізовано з урахуванням сучасних стандартів подачі коду та стилізації.
