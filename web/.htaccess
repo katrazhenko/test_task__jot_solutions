@@ -1,0 +1,10 @@
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+
+# Якщо файл або папка існують, використовувати їх
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# В іншому випадку перенаправити на index.php
+RewriteRule . index.php

@@ -1,0 +1,595 @@
+/* ====================================================
+   MAIN STYLESHEET — Dark modern theme
+   ==================================================== */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-primary: #0f1117;
+    --bg-secondary: #1a1d27;
+    --bg-card: #21242f;
+    --bg-hover: #282c3a;
+    --bg-input: #181b24;
+    --border: #2e3348;
+    --border-focus: #6366f1;
+    --text-primary: #e8eaed;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --accent-dim: rgba(99, 102, 241, 0.15);
+    --green: #34d399;
+    --green-dim: rgba(52, 211, 153, 0.15);
+    --red: #f87171;
+    --red-dim: rgba(248, 113, 113, 0.15);
+    --yellow: #fbbf24;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    --transition: 0.2s ease;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* --- App Layout --- */
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Header --- */
+.app-header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    font-size: 1.4rem;
+}
+
+/* --- Navigation --- */
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.nav-list li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all var(--transition);
+}
+
+.nav-list li a:hover,
+.nav-list li.active a {
+    background: var(--accent-dim);
+    color: var(--accent-hover);
+}
+
+/* --- Breadcrumbs --- */
+.breadcrumb-bar {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 0 0;
+}
+
+.breadcrumbs {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.breadcrumbs .sep {
+    margin: 0 0.25rem;
+    color: var(--text-muted);
+}
+
+.breadcrumbs a {
+    color: var(--text-secondary);
+}
+
+/* --- Main Content --- */
+.app-content {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 3rem;
+    flex: 1;
+}
+
+/* --- Footer --- */
+.app-footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 1.25rem 2rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* --- Grid Header --- */
+.grid-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.grid-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.grid-header .icon {
+    font-size: 1.4rem;
+}
+
+.grid-info {
+    background: var(--accent-dim);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: var(--radius);
+    padding: 0.65rem 1rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--accent-hover);
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.15rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+    font-family: var(--font);
+}
+
+.btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent);
+    color: var(--accent-hover);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    color: #fff;
+}
+
+.btn-refresh .refresh-icon {
+    font-size: 1.15rem;
+    display: inline-block;
+    transition: transform 0.4s ease;
+}
+
+.btn-refresh:hover .refresh-icon {
+    transform: rotate(180deg);
+}
+
+/* ====================================================
+   CGridView Custom Styling
+   ==================================================== */
+.custom-grid {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+/* Summary */
+.grid-summary {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-secondary);
+}
+
+/* Table */
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.items-table thead tr:first-child th {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+    text-align: left;
+}
+
+.items-table thead tr:first-child th a {
+    color: var(--text-secondary);
+}
+
+.items-table thead tr:first-child th a:hover {
+    color: var(--accent-hover);
+}
+
+/* Filters row */
+.items-table .filters td {
+    background: var(--bg-secondary);
+    padding: 0.4rem 0.5rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.filter-input,
+.filter-select {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    font-family: var(--font);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 2px var(--accent-dim);
+}
+
+.filter-input::placeholder {
+    color: var(--text-muted);
+}
+
+.filter-select {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    padding-right: 1.75rem;
+}
+
+.filter-select option {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+/* Data rows */
+.items-table tbody tr {
+    transition: background var(--transition);
+}
+
+.items-table tbody tr td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+.items-table tbody tr:hover td {
+    background: var(--bg-hover);
+}
+
+.items-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Column-specific */
+.col-id {
+    width: 55px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-muted) !important;
+}
+
+.col-type {
+    text-align: center;
+}
+
+.col-lang {
+    text-align: center;
+}
+
+.col-status {
+    text-align: center;
+}
+
+.col-date {
+    white-space: nowrap;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.badge-active {
+    background: var(--green-dim);
+    color: var(--green);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.badge-banned {
+    background: var(--red-dim);
+    color: var(--red);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+/* Referer links */
+.referer-link {
+    color: var(--accent);
+    font-size: 0.85rem;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+/* ====================================================
+   Pager
+   ==================================================== */
+.custom-pager {
+    padding: 0.75rem 1.25rem;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+}
+
+.custom-pager ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-pager li {
+    display: inline-block;
+}
+
+.custom-pager li a,
+.custom-pager li span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 0.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--transition);
+}
+
+.custom-pager li a {
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.custom-pager li a:hover {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent-hover);
+}
+
+.custom-pager li.selected a,
+.custom-pager li.active a,
+.custom-pager li span.selected {
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+    pointer-events: none;
+}
+
+.custom-pager li.hidden {
+    display: none;
+}
+
+
+/* ====================================================
+   jQuery UI DatePicker dark theme override
+   ==================================================== */
+.ui-datepicker {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--shadow) !important;
+    font-family: var(--font) !important;
+    padding: 0.5rem !important;
+    z-index: 9999 !important;
+}
+
+.ui-datepicker-header {
+    background: var(--bg-secondary) !important;
+    border: none !important;
+    border-radius: 6px !important;
+    color: var(--text-primary) !important;
+    padding: 0.5rem !important;
+}
+
+.ui-datepicker-title {
+    color: var(--text-primary) !important;
+}
+
+.ui-datepicker-title select {
+    background: var(--bg-input) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 4px !important;
+    padding: 2px 4px !important;
+}
+
+.ui-datepicker th {
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    font-size: 0.75rem !important;
+}
+
+.ui-datepicker td {
+    padding: 1px !important;
+}
+
+.ui-datepicker td a,
+.ui-datepicker td span {
+    background: transparent !important;
+    color: var(--text-secondary) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    text-align: center !important;
+    padding: 0.3rem !important;
+}
+
+.ui-datepicker td a:hover {
+    background: var(--accent-dim) !important;
+    color: var(--accent-hover) !important;
+}
+
+.ui-datepicker td a.ui-state-active {
+    background: var(--accent) !important;
+    color: #fff !important;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+    cursor: pointer;
+    top: 50% !important;
+    transform: translateY(-50%);
+}
+
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+    color: var(--text-secondary) !important;
+}
+
+.ui-datepicker .ui-datepicker-prev:hover,
+.ui-datepicker .ui-datepicker-next:hover {
+    background: var(--accent-dim) !important;
+    border-radius: 4px !important;
+}
+
+/* ====================================================
+   Empty text
+   ==================================================== */
+.items-table .empty {
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* ====================================================
+   Responsive
+   ==================================================== */
+@media (max-width: 1024px) {
+    .app-content {
+        padding: 1rem;
+    }
+
+    .custom-grid {
+        overflow-x: auto;
+    }
+
+    .items-table {
+        min-width: 900px;
+    }
+}
+
+/* ====================================================
+   Loading overlay
+   ==================================================== */
+.grid-view-loading {
+    opacity: 0.5;
+    pointer-events: none;
+    position: relative;
+}
